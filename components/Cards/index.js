@@ -17,3 +17,5 @@
 // </div>
 //
 // Create a card for each of the articles and add the card to the DOM.
+// GET 'https//:lambda-times-backend.herokuapp.com/articles';
+
