@@ -8,42 +8,28 @@
 //  The tab component should look like this:
 //    <div class="tab">topic here</div>
 
-// axios.get('https://lambda-times-backend.herokuapp.com/topics')
-.then((response) => {
-let topics = document.querySelector('.topics');
-topics.appendChild(Tabs(response))
-}); 
 
-// const ltArray = [
-//       'Javascript',
-//       'Bootstrap',
-//       'Technology',
-//       'Jquery',
-//       'Node.js'
-// ];
 
-function Tabs(info) {
-    const
-      tab = document.createElement('div');
-      tab.className = "tab";
+ axios.get('https://lambda-times-backend.herokuapp.com/topics')
+.then(results => {
+      const top = document.querySelector('.topics');
+      results.data.topics.forEach(element => {
+          top.appendChild(tabs(element));
+      })
+  .catch(err=>{
+      console.log(err);
+  });
+  });
 
-      tabInfo = tab.appendChild(document.createElement('div'));
-      tabInfo.className = "tab-info";
 
-      javaSc = tabInfo.appendChild(document.createElement('h3'));
-      javaSc.textContent = info.data.topics[0];
-      bootStr = tabInfo.appendChild(document.createElement('h3'));
-      bootStr.textContent = info.data.topics[1];
-      tech = tabInfo.appendChild(document.createElement('h3'));
-      tech.textContent = info.data.topics[2];
-      jQuery = tabInfo.appendChild(document.createElement('h3'));
-      jQuery.textContent = info.data.topics[3];
-      nodeJs = tabInfo.appendChild(document.createElement('h3'));
-      nodeJs.textContent = info.data.topics[4];
-
+function tabs (data) {
+      const tab = document.createElement('div');
+      tab.textContent = data;
+      tab.classList.add('tab');
+      
       return tab;
-};
-let topics = document.querySelector('.topics');
+  };
+
 
 
 
